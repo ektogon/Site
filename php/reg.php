@@ -20,9 +20,7 @@ if ($_SESSION['user']) {
 
 <body style="background-image: radial-gradient(#0E5A6E,#5fbdce);">
     <div class="cont">
-        <!-- Форма регистрации -->
-
-        <form action="vender/signup.php" method="post" enctype="multipart/form-data">
+        <form>
             <label>Имя</label>
             <input type="text" name="name" placeholder="Введите Имя">
             <label>Логин</label>
@@ -33,16 +31,14 @@ if ($_SESSION['user']) {
             <input type="password" name="password" placeholder="Введите пароль">
             <label>Подтверждение пароля</label>
             <input type="password" name="repeat_pass" placeholder="Подтвердите пароль">
-            <button type="submit">Зарегистрироваться</button>
+            <button type="submit" class="register-btn">Зарегистрироваться</button>
             <p>
                 У вас уже есть аккаунт? - <a href="authorization.php">авторизируйтесь</a>!
             </p>
-            <?php
-            if ($_SESSION['message']) {
-                echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
-            }
-            unset($_SESSION['message']);
-            ?>
+            <p class="msg none"></p>
+
+            <script src="../js/jquery-3.4.1.min.js"></script>
+            <script src="../js/main.js"></script>
         </form>
     </div>
 </body>

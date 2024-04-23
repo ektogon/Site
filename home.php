@@ -14,9 +14,8 @@ require 'php/footer.php' ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<?php include 'php/header.php' ?>
 <body>
-    <?php include 'php/header.php' ?>
     <div class="slider middle">
         <div class="slides">
             <input type="radio" name="r" id="r1" checked>

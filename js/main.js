@@ -9,7 +9,7 @@ $('.login-btn').click(function (e) {
 
     let login = $('input[name="login"]').val(),
         password = $('input[name="password"]').val();
-    
+
     $.ajax({
         url: 'vender/signin.php',
         type: 'POST',
@@ -18,9 +18,9 @@ $('.login-btn').click(function (e) {
             login: login,
             password: password
         },
-        success (data) {
+        success(data) {
             if (data.status) {
-                document.location.href = '../../home.php';
+                document.location.href = '../home.php';
             } else {
 
                 if (data.type === 1) {
@@ -37,65 +37,52 @@ $('.login-btn').click(function (e) {
 
 });
 
-// /*
-//     Получение аватарки с поля
-//  */
+/*
+    Регистрация
+ */
 
-// let avatar = false;
+$('.register-btn').click(function (e) {
+    e.preventDefault();
 
-// $('input[name="avatar"]').change(function (e) {
-//     avatar = e.target.files[0];
-// });
+    $(`input`).removeClass('error');
 
-// /*
-//     Регистрация
-//  */
+    let login = $('input[name="login"]').val(),
+        password = $('input[name="password"]').val(),
+        name = $('input[name="name"]').val(),
+        email = $('input[name="email"]').val(),
+        password_confirm = $('input[name="repeat_pass"]').val();
 
-// $('.register-btn').click(function (e) {
-//     e.preventDefault();
+    let formData = new FormData();
+    formData.append('login', login);
+    formData.append('password', password);
+    formData.append('repeat_pass', password_confirm);
+    formData.append('name', name);
+    formData.append('email', email);
 
-//     $(`input`).removeClass('error');
+    $.ajax({
+        url: 'vender/signup.php',
+        type: 'POST',
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: formData,
+        success(data) {
 
-//     let login = $('input[name="login"]').val(),
-//         password = $('input[name="password"]').val(),
-//         full_name = $('input[name="full_name"]').val(),
-//         email = $('input[name="email"]').val(),
-//         password_confirm = $('input[name="password_confirm"]').val();
+            if (data.status) {
+                document.location.href = 'authorization.php';
+            } else {
 
-//     let formData = new FormData();
-//     formData.append('login', login);
-//     formData.append('password', password);
-//     formData.append('password_confirm', password_confirm);
-//     formData.append('full_name', full_name);
-//     formData.append('email', email);
-//     formData.append('avatar', avatar);
+                if (data.type === 1) {
+                    data.fields.forEach(function (field) {
+                        $(`input[name="${field}"]`).addClass('error');
+                    });
+                }
 
+                $('.msg').removeClass('none').text(data.message);
 
-//     $.ajax({
-//         url: 'vendor/signup.php',
-//         type: 'POST',
-//         dataType: 'json',
-//         processData: false,
-//         contentType: false,
-//         cache: false,
-//         data: formData,
-//         success (data) {
+            }
 
-//             if (data.status) {
-//                 document.location.href = '/index.php';
-//             } else {
-
-//                 if (data.type === 1) {
-//                     data.fields.forEach(function (field) {
-//                         $(`input[name="${field}"]`).addClass('error');
-//                     });
-//                 }
-
-//                 $('.msg').removeClass('none').text(data.message);
-
-//             }
-
-//         }
-//     });
-
-// });
+        }
+    });
+});

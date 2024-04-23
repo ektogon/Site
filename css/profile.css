@@ -1,5 +1,5 @@
 /* Войти */
-/* #main {
+#main {
     display: none;
     position: absolute;
     top: 0;
@@ -28,7 +28,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 #main:target {display: block;}
-#main1:target {display: block;} */
+#main1:target {display: block;}
 
 .cont{
     position: absolute;
