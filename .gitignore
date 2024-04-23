@@ -1,6 +1,6 @@
+.gitignore
 gamepc.php
 h.php
-home.php
 css/bootstrap.css
 css/gamepc.css
 css/home.css
@@ -44,13 +44,8 @@ img/goods/mouse/4.jpg
 img/goods/mouse/5.jpg
 img/goods/mouse/6.jpg
 js/jquery-3.4.1.min.js
-js/main.js
-php/authorization.php
 php/footer.php
 php/header.php
 php/linkdb.php
-php/reg.php
 php/vender/connect.php
 php/vender/logout.php
-php/vender/signin.php
-php/vender/signup.php
